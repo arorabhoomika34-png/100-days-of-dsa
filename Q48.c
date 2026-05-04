@@ -12,14 +12,14 @@ Output:
 #include <stdio.h>
 #include <stdlib.h>
 
-// Structure for tree node
+
 struct Node {
     int data;
     struct Node* left;
     struct Node* right;
 };
 
-// Create new node
+
 struct Node* newNode(int data) {
     struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
     temp->data = data;
@@ -27,7 +27,7 @@ struct Node* newNode(int data) {
     return temp;
 }
 
-// Build tree using user input (Preorder)
+
 struct Node* buildTree() {
     int data;
     printf("Enter data (-1 for NULL): ");
@@ -47,7 +47,7 @@ struct Node* buildTree() {
     return root;
 }
 
-// Function to find height
+
 int height(struct Node* root) {
     if (root == NULL)
         return 0;
@@ -58,7 +58,7 @@ int height(struct Node* root) {
     return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
 }
 
-// Main function
+
 int main() {
     printf("Build your tree:\n");
     struct Node* root = buildTree();
