@@ -7,6 +7,8 @@ Input:
 
 Output:
 - Output specifications*/
+=
+}
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -25,6 +27,26 @@ struct Node* newNode(int data) {
     return temp;
 }
 
+// Build tree using user input (Preorder)
+struct Node* buildTree() {
+    int data;
+    printf("Enter data (-1 for NULL): ");
+    scanf("%d", &data);
+
+    if (data == -1)
+        return NULL;
+
+    struct Node* root = newNode(data);
+
+    printf("Enter left child of %d\n", data);
+    root->left = buildTree();
+
+    printf("Enter right child of %d\n", data);
+    root->right = buildTree();
+
+    return root;
+}
+
 // Function to find height
 int height(struct Node* root) {
     if (root == NULL)
@@ -36,15 +58,12 @@ int height(struct Node* root) {
     return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
 }
 
-// Example usage
+// Main function
 int main() {
-    struct Node* root = newNode(1);
-    root->left = newNode(2);
-    root->right = newNode(3);
-    root->left->left = newNode(4);
-    root->left->right = newNode(5);
+    printf("Build your tree:\n");
+    struct Node* root = buildTree();
 
-    printf("Height of tree: %d", height(root));
+    printf("Height of tree: %d\n", height(root));
 
     return 0;
 }
